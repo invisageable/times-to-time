@@ -1,12 +1,19 @@
 [workspace]
 resolver = "2"
+
 members = [
   # crates.
   "crates/times-to-time",
 ]
 
+exclude = [".todo.md", "notes"]
+
 [workspace.package]
 edition = "2021"
+keywords = ["time", "timer", "times-to-time"]
+license = "MIT OR Apache"
+readme = "README.md"
+repository = "https://github.com/invisageable/times-to-time"
 version = "0.0.0"
 
 [workspace.dependencies]
