@@ -8,4 +8,4 @@ repository.workspace = true
 version.workspace = true
 
 [dependencies]
-times-to-time-timer.workspace = true
+times-to-time-timer = { path = "../times-to-time-timer", version = "0.0.0" }
