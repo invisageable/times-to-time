@@ -1,4 +1,4 @@
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, Default)]
 pub struct Time {
   pub instant: Option<std::time::Instant>,
 }
@@ -16,12 +16,6 @@ impl Time {
       (Some(start), Some(end)) => Some(end.duration_since(start)),
       _ => None,
     }
-  }
-}
-
-impl Default for Time {
-  fn default() -> Self {
-    Self { instant: None }
   }
 }
 

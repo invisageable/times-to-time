@@ -16,11 +16,6 @@ pub enum Unit {
 
 impl Unit {
   #[inline]
-  pub fn from_str(unit: &'static str) -> Self {
-    unit.into()
-  }
-
-  #[inline]
   pub fn as_factor(&self) -> f64 {
     match self {
       Self::Ns => 1.0,
