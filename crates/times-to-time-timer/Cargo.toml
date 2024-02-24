@@ -1,0 +1,13 @@
+[package]
+name = "times-to-time-timer"
+edition.workspace = true
+
+[dependencies]
+smol_str.workspace = true
+
+[dev-dependencies]
+criterion.workspace = true
+
+[[bench]]
+name = "time"
+harness = false

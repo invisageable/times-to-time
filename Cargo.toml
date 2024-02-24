@@ -1,0 +1,14 @@
+[workspace]
+resolver = "2"
+members = [
+  # crates.
+  "crates/times-to-time",
+]
+
+[workspace.package]
+edition = "2021"
+version = "0.0.0"
+
+[workspace.dependencies]
+criterion = { version = "0.5.1", features = ["html_reports"] }
+smol_str = "0.2.0"
