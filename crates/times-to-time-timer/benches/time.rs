@@ -13,6 +13,10 @@ fn criterion_benchmark(c: &mut Criterion) {
   thread::sleep(Duration::from_millis(100));
   timer.end();
 
+  c.bench_function("duration", |b| {
+    b.iter(|| black_box(timer.duration()));
+  });
+
   c.bench_function("duration_in_unit", |b| {
     b.iter(|| timer.duration_in_unit(black_box(Unit::S)));
   });

@@ -1,4 +1,4 @@
-/// a time unit representation.
+/// A time unit representation.
 ///
 /// ## variants
 ///
@@ -15,6 +15,8 @@ pub enum Unit {
 }
 
 impl Unit {
+  /// ...
+  //
   #[inline]
   pub fn as_factor(&self) -> f64 {
     match self {
