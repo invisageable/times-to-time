@@ -3,9 +3,9 @@ name = "times-to-time"
 edition.workspace = true
 keywords.workspace = true
 license.workspace = true
-readme.workspace = true
+readme = "README.md"
 repository.workspace = true
 version.workspace = true
 
 [dependencies]
-times-to-time-timer = { path = "../times-to-time-timer" }
+times-to-time-timer.workspace = true

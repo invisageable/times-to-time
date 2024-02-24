@@ -1,6 +1,6 @@
 # times-to-time.
 
-> *a simple timer.*
+> *A simple timer.*
 
 ## license.
 

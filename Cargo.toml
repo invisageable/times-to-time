@@ -4,6 +4,7 @@ resolver = "2"
 members = [
   # crates.
   "crates/times-to-time",
+  "crates/times-to-time-timer",
 ]
 
 exclude = [".todo.md", "notes"]
@@ -17,5 +18,7 @@ repository = "https://github.com/invisageable/times-to-time"
 version = "0.0.0"
 
 [workspace.dependencies]
+times-to-time-timer = { path = "crates/times-to-time-timer", version = "0.0.0" }
+
 criterion = { version = "0.5.1", features = ["html_reports"] }
 smol_str = "0.2.0"
