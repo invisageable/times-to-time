@@ -8,7 +8,7 @@ pub struct Timer {
   /// A start time.
   pub maybe_time_start: Option<Time>,
   /// A end time.
-  pub mabe_time_end: Option<Time>,
+  pub maybe_time_end: Option<Time>,
 }
 
 impl Timer {
@@ -20,6 +20,17 @@ impl Timer {
   }
 
   /// ...
+  ///
+  /// ## examples.
+  ///
+  /// ```
+  /// use times_to_time_timer::timer::Timer;
+  ///
+  /// let mut timer = Timer::new();
+  ///
+  /// timer.start();
+  /// println!("{}", timer.maybe_time_start.unwrap());
+  /// ```
   //
   #[inline]
   pub fn start(&mut self) {
@@ -27,10 +38,30 @@ impl Timer {
   }
 
   /// ...
+  ///
+  /// ## examples.
+  ///
+  /// ```
+  /// use times_to_time_timer::timer::Timer;
+  ///
+  /// let mut timer = Timer::new();
+  ///
+  /// timer.start();
+  /// timer.sleep(100);
+  /// timer.end();
+  /// println!("{}", timer.maybe_time_end.unwrap());
+  /// ```
   //
   #[inline]
   pub fn end(&mut self) {
-    self.mabe_time_end = Some(Time::now());
+    self.maybe_time_end = Some(Time::now());
+  }
+
+  /// ...
+  //
+  #[inline]
+  pub fn sleep(&mut self, millis: u64) {
+    std::thread::sleep(std::time::Duration::from_millis(millis));
   }
 
   /// ...
@@ -38,13 +69,13 @@ impl Timer {
   #[inline]
   pub fn reset(&mut self) {
     self.maybe_time_start = None;
-    self.mabe_time_end = None;
+    self.maybe_time_end = None;
   }
 
   /// Returns an optional [`std::time::Duration`] instance.
   //
   pub fn duration(&self) -> Option<std::time::Duration> {
-    match (self.maybe_time_start.as_ref(), self.mabe_time_end.as_ref()) {
+    match (self.maybe_time_start.as_ref(), self.maybe_time_end.as_ref()) {
       (Some(start), Some(end)) => Time::merge(start, end),
       _ => None,
     }
@@ -62,5 +93,18 @@ impl Timer {
 impl Drop for Timer {
   fn drop(&mut self) {
     self.reset();
+  }
+}
+
+#[cfg(test)]
+mod test {
+  use super::Timer;
+
+  #[test]
+  fn should_make_timer() {
+    let timer = Timer::new();
+
+    assert!(timer.maybe_time_start == None);
+    assert!(timer.maybe_time_end == None);
   }
 }

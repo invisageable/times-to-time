@@ -3,14 +3,11 @@ use times_to_time_timer::unit::Unit;
 
 use criterion::{black_box, criterion_group, criterion_main, Criterion};
 
-use std::thread;
-use std::time::Duration;
-
 fn criterion_benchmark(c: &mut Criterion) {
   let mut timer = Timer::new();
 
   timer.start();
-  thread::sleep(Duration::from_millis(100));
+  timer.sleep(100);
   timer.end();
 
   c.bench_function("duration", |b| {

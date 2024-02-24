@@ -1,6 +1,6 @@
-/// A time representation.
+/// A [`Time`] representation.
 //
-#[derive(Clone, Debug, Default)]
+#[derive(Clone, Copy, Debug, Default, PartialEq)]
 pub struct Time {
   pub instant: Option<std::time::Instant>,
 }
@@ -24,5 +24,11 @@ impl Time {
       (Some(start), Some(end)) => Some(end.duration_since(start)),
       _ => None,
     }
+  }
+}
+
+impl std::fmt::Display for Time {
+  fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+    std::fmt::Debug::fmt(&self, f)
   }
 }

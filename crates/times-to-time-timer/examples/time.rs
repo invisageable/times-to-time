@@ -8,5 +8,9 @@ fn main() {
   std::thread::sleep(std::time::Duration::from_millis(100));
   timer.end();
 
-  println!("{:.6}", timer.duration_in_unit(Unit::S).unwrap());
+  let Some(seconds) = timer.duration_in_unit(Unit::S) else {
+    std::process::exit(1);
+  };
+
+  println!("time: {seconds:.6}s");
 }
